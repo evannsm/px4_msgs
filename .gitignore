@@ -1,2 +1,6 @@
 build/
 msg/idl.cc
+*.vc.db
+*.vc.db-shm
+*.vc.db-wal
+**/log/
