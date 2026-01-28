@@ -13,14 +13,37 @@ find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 # ##############################################################################
-# Generate ROS messages, ROS2 interfaces and IDL files #
+# Generate ROS messages, ROS2 interfaces and IDL files
 # ##############################################################################
 
-# get all msg files
-set(MSGS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/msg")
-file(GLOB PX4_MSGS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${MSGS_DIR}/*.msg")
+# Define the limited set of messages you need
+set(PX4_MSGS
+  "ActuatorArmed.msg"
+  # "ActuatorInhibit.msg"
+  "ActuatorControlsStatus.msg"
+  "ActuatorMotors.msg"
+  "ActuatorOutputs.msg"
+  "BatteryStatus.msg"
+  # "FullState.msg"
+  "OffboardControlMode.msg"
+  "RcChannels.msg"
+  "TrajectorySetpoint.msg"
+  "VehicleCommand.msg"
+  "VehicleCommandAck.msg"
+  "VehicleControlMode.msg"
+  "VehicleGlobalPosition.msg"
+  "VehicleLocalPosition.msg"
+  "VehicleRatesSetpoint.msg"
+  "VehicleStatus.msg"
+  "VehicleThrustSetpoint.msg"
+  "VehicleTorqueSetpoint.msg"
+  "VehicleOdometry.msg"
+)
 
-# get all srv files
+# Make paths relative to msg/ directory
+list(TRANSFORM PX4_MSGS PREPEND "msg/")
+
+# Get all srv files (auto-discover from srv directory)
 set(SRVS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/srv")
 file(GLOB PX4_SRVS RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${SRVS_DIR}/*.srv")
 
