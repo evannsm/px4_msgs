@@ -33,6 +33,7 @@ find_package(rosidl_default_generators REQUIRED)
 set(PX4_MSGS
   "ActuatorArmed.msg"
   "ActuatorControlsStatus.msg"
+  "ActuatorInhibit.msg"
   "ActuatorMotors.msg"
   "ActuatorOutputs.msg"
   "BatteryStatus.msg"
